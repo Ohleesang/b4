@@ -39,7 +39,7 @@ class Solution {
         var transBox = transposedMatrix(board)
         for (box in transBox) {
             // 정렬된 행렬을 역순으로stack에 입력
-            for (idx in box.size - 1 downTo 0) {
+            for (idx in MAX_SIZE - 1 downTo 0) {
                 if (box[idx] == 0) continue
 
                 bracket.add(box[idx])
@@ -61,7 +61,8 @@ class Solution {
                     bracket.pop()
                 }
 
-                ex = bracket.peek()
+                if(bracket.isNotEmpty()) ex = bracket.peek()
+                else ex = -1
             }
         }
 
@@ -82,4 +83,14 @@ fun main() {
         intArrayOf(1, 5, 3, 5, 1, 2, 1, 4)
     )
     //4
+
+    a.solution(
+        arrayOf(
+            intArrayOf(0, 0, 0, 0),
+            intArrayOf(0, 0, 0, 0),
+            intArrayOf(0, 4, 4, 0),
+            intArrayOf(1, 2, 2, 1)
+        ),
+        intArrayOf(2, 3, 1, 4, 2, 3)
+    )//6
 }
